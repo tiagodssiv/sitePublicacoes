@@ -1,23 +1,71 @@
-<h1>Gerenciador de Conteúdo</h1>
-
-<a href="http://localhost/PROJS/VIDEO_AULAS/SERIE/02_PHP+MVC+CRUD/?pagina=admin&metodo=create">Criar Publicação</a><br><br>
-<hr>
-<br><table border="2">
-	<tr>
-		<th>ID</th>
-		<th>TÍTULO</th>
-		<th>ALTERAÇÃO</th>
-		<th>DELEÇÃO</th>
-	</tr>
 
 
-	{% for postagem in postagens %}
-	<tr>
-		<th>{{postagem.id}}</th>
-		<th>{{postagem.titulo}}</th>
-		<th><a href="http://localhost/PROJS/VIDEO_AULAS/SERIE/02_PHP+MVC+CRUD/?pagina=admin&metodo=change&id={{postagem.id}}">ALTERAÇÃO</a></th>
-		<th><a href="http://localhost/PROJS/VIDEO_AULAS/SERIE/02_PHP+MVC+CRUD/?pagina=admin&metodo=delete&id={{postagem.id}}">DELEÇÃO</a></th>
-	</tr>
-	{% endfor %}
 
-</table>
+
+<div class="wrapper">
+  <div class="container">
+   
+    <div class="content">
+      
+   <h1> <a href="http://localhost/php mvc com PDO TESTE/?pagina=admin&metodo=create">Criar Publicação</a></h1>    <br class="clear" />
+   
+	 <h2>Gerenciador de publicações</h2><br>
+     
+
+	 <table align="center" border="1"summary="Summary Here" cellpadding="0" cellspacing="0">
+        <thead>
+          <tr>
+            <th>Status</th>
+            <th>imagem</th>
+            <th>Comentários</th>
+			
+			<th>Conf</th>
+          </tr>
+        </thead>
+        <tbody>
+		{% for postagem in postagens %}
+         <!-- <tr class="light">
+		   {% if template == 'Twig' %}
+    <h1> Você escolheu uma ótima ferramenta.</h1>
+    {% endif %}-->
+            <td >{% if postagem.destaque == 'Destacado' %}
+			<p style="text-align:center;color:#43CD80;text-size:18px;">Destacado</p>
+
+			{% endif %}
+			{% if postagem.destaque == 'Sem destaque' %}
+			<p style="text-align:center;color:#2F4F4F;text-size:18px;">Sem destaque </p>
+			{% endif %}
+			</td>
+            <td class="principal"style="text-align:center;" >{% if postagem.arquivo == 'Sem imagem' %}
+			<p style="text-align:center;color:#2F4F4F;text-size:1px;">{{postagem.arquivo}}</p>
+			{% endif %}
+			
+			
+			{% if postagem.arquivo!= 'Sem imagem' %}
+			
+			<img style="" width="80"height="50" src='{{postagem.arquivo}}'/></td>
+			{% endif %}
+			<td class="principal" style="text-align:center;" ><a href="#{{postagem.id}}">{{postagem.quantidade}}</a></td>
+			
+           <td style="text-align:center;" ><div style="width:2px;text-align:center;"><div  id="topnav">
+      <ul>
+       <li ><a href="">...</a>
+          <ul>
+		    <li><a href='http://localhost/php mvc com PDO TESTE/?pagina=admin&metodo=comenPost&id={{postagem.id}}'>Comentários</a></li>
+            <li><a href='#'onclick='confirmacao("{{postagem.id}}")'>Apagar publicação</a></li>
+            <li><a href="http://localhost/php mvc com PDO TESTE/?pagina=admin&metodo=change&id={{postagem.id}}">Editar publicação</a></li>
+            <li><a href="http://localhost/php mvc com PDO TESTE/?pagina=post&id={{postagem.id}}">Ver publicação</a></li>
+            <li><a href="#">Destacar publicação</a>
+			<ul><li><a href="http://localhost/php mvc com PDO TESTE/?pagina=admin&metodo=mudarDestaque&destaque=Destacado&id={{postagem.id}}">Destacar</a></li><li><a href="http://localhost/php mvc com PDO TESTE/?pagina=admin&metodo=mudarDestaque&destaque=remover&id={{postagem.id}}">Remover destaque</a></li></ul></li>
+          </ul>
+        </li>
+      </ul>
+    </div></div> </td>
+          </tr>
+          
+          {% endfor %}
+        </tbody>
+		
+      </table></div></div></div>
+	  
+

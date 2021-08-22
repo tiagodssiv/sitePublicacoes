@@ -1,4 +1,4 @@
-<h1>Criar Publicação</h1>
+<!--<h1>Criar Publicação</h1>
 
 <form method="post" action="?pagina=admin&metodo=insert">
 	<span>Título</span><br>
@@ -9,3 +9,69 @@
 
 	<input type="submit" value="Cadastrar">
 </form>
+
+--><br class="clear" />
+
+ 
+ <h1 style="margin-left:27%;">Cadastrar Publicação</h1>    <br class="clear" />
+ <div class="wrapper ">
+  <div class="container">
+  
+    <!--<img style="margin-top:10px;margin-left:20px;"class="imgl" src="app/Template/news-magazine/images/demo/farao.jpg" alt="" width="80" height="70" />
+    
+ -->
+    <div class="content">
+	   
+      <div id="respond">
+        <form action="?pagina=admin&metodo=insert" method="post" enctype="multipart/form-data">
+		
+       <div style="margin-left:auto;margin-top:7%;"><img style="margin-top:5px;"class="imgl" src="app/Template/news-magazine/images/demo/farao.jpg" alt="" width="80" height="128px;" /></div>
+		<!--  <div  style="margin-left:100px;margin-top:77px;">  
+		 <p>
+		   <input style="width:98%;"type="file"  id="imagem"  name="imagem[]" multiple > 
+          </p> </div>-->
+		  
+         <!-- <p>
+            <input style="width:98%;height:20px;" placeholder="Assunto"type="text" maxlength="300" name="titulo"id="titulo" value=""  />
+            <label for="name"class="caractere"><small></small></label>
+          </p>-->
+		 <p>
+           <input style="width:82%;"type="file"  id="imagem"  name="imagem"> 
+          </p>
+		<p>
+            <input style="width:75%;height:20px;" placeholder="Cadastrar Assunto"type="text" class="ti" maxlength="50" name="mail" id="ti" value=""  />
+            <label for="name"class="caractere"><small><img style=" margin-top:-118px;float: right;" id="tit" class="imgl" src="app/Template/news-magazine/images/demo/plus.png" alt="" width="25" height="20" /></small></label>
+          </p>
+		<p>
+		
+            <select id="select"class="sec" style="width:83%;"name="select">
+			
+		              {% for postagem in lista %}
+            <option value="{{postagem.id}}">{{postagem.descricao}}</option>
+            
+			{% endfor %}
+            </select>
+			<!--<input style="width:82%;height:20px;" placeholder="Assunto"type="text" maxlength="300" name="titulo"id="titu" value=""  />-->
+            <label for="name"class="caractere"><small></small></label>
+          </p>
+        
+           <p>
+            <input style="width:82%;height:20px;" placeholder="Título da postagem"type="text" maxlength="300" name="titulo"id="titul" value=""  />
+            <label for="name"class="caractere"><small></small></label>
+          </p>
+		    <p> <input style="float:left;margin-top:-20px;margin-left:20px;" type = "checkbox" id = "codificação" name = "destaque[]" checked value = "Destado" >
+          <label for="comment" style="margin-left:15px;"><small>Destacar publicação</small></label> </p>
+           <p>
+           <textarea name="conteudo" maxlength="2000" style="width:99%;height:200px;"id="comentario" cols="30" rows="10"></textarea>            
+		   <label for="comment" style="display:none;"><small>Postagem</small></label>
+          </p>
+          <p>
+            <input name="submit" type="submit" id="submit" value="Publicar" />
+            &nbsp;
+            <input name="reset" type="reset" id="reset" tabindex="5" value="Apagar" />
+          </p>
+		  <p><label for="review"></label> <small class="caracteres"></small></p>
+
+        </form>
+      </div>
+    </div></div></div>

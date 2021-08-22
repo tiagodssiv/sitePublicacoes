@@ -1,9 +1,47 @@
 <html>
 	<head>
+
+		<!--função perguntar antesd e excluir
+		Ao clicar no link de exclusão o id é lançado dentro da função e assim a função é que faz a chamada da class core
+	No link faça assim <a href='#'onclick='confirmacao("{{postagem.id}}")'>DELEÇÃO</a>;	No caso aqui , está pegando o id com o twig  , mas pode ser com uma
+	variável php normal
+	-->
+	<script>	function confirmacao(id) {
+
+if(confirm('¿Esta seguro de eliminar este registro?')){
+	window.location.href = "http://localhost/php mvc com PDO TESTE/?pagina=admin&metodo=delete&id="+id;
+
+}
+/*
+
+PODE FAZER A FUNÇÃO ASSIM 
+
+if(confirm('¿Esta seguro de eliminar este registro?')){
+	window.location.href = "http://localhost/php mvc com PDO TESTE/?pagina=admin&metodo=delete&id="+id;
+
+} 
+---------------------
+
+OU ASSIM :
+
+
+			var resposta = confirm("Deseja remover esse registro?");
+			if (resposta == true) {
+				 window.location.href = "http://localhost/php mvc com PDO TESTE/?pagina=admin&metodo=delete&id="+id;
+
+			}
+			----------------------
+			
+			
+			*/
+	   }
+	   </script>
+	   <link rel="stylesheet" href="app/Template/style.css" type="text/css" />
 	</head>
 
 	<body>
-		<style type="text/css">
+	
+	<!--	<style type="text/css">
 			*{margin: 0; padding: 0;}
 			body{background-color:#6495ED;}
 
@@ -23,15 +61,14 @@
 						  article h2 a:hover{ text-decoration: underline; }
 
 						  article p{font:16px Arial; color: #333; padding-left: 2px;}
-		</style>
-
+		</style>-->
 		<div id="corpo">
 			<div id="topo">
 				<header>
 					<nav>
-						<a href="http://localhost/PROJS/VIDEO_AULAS/SERIE/02_PHP+MVC+CRUD/">Home</a> |
-						<a href="http://localhost/PROJS/VIDEO_AULAS/SERIE/02_PHP+MVC+CRUD/?pagina=sobre">Sobre</a>
-						<a href="http://localhost/PROJS/VIDEO_AULAS/SERIE/02_PHP+MVC+CRUD/?pagina=admin&metodo=index" class="flutuacao-dir">Admin</a>
+						<a href="http://localhost/php mvc com PDO TESTE">Home</a> |
+						<a href="http://localhost/php mvc com PDO TESTE/?pagina=sobre">Sobre</a>
+						<a href="http://localhost/php mvc com PDO TESTE/?pagina=admin&metodo=index" class="flutuacao-dir">Admin</a>
 					</nav>
 				</header>
 			</div>

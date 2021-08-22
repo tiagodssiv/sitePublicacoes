@@ -1,14 +1,237 @@
-				<section>
-					<h1>Postagens:</h1>
+				
 
-					{% for postagem in postagens %}
-						<article>
+	<div class="wrapper col2">
+  <div id="topbar">
+    <div id="topnav">
+      <ul>
+        <li class="active"><a href="http://localhost/php mvc com PDO TESTE">Home</a></li>
+        <li><a href="http://localhost/php mvc com PDO TESTE/?pagina=sobre">Sobre</a></li>
+        <li><a href="app/Template/news-magazine/pages/full-width.html">Full Width</a></li>
+     <li><a href="#">Assunto</a>
+          <ul>
+		  
+		  {% for comentario in comentarios%}
+            <li><a href="#">{{comentario.descricao}}</a></li>
+			{% endfor %}
+          </ul>
+        </li>
+     </ul>
+    </div>
+    <div id="search">
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Site Search</legend>
+          <input type="text" value="Buscar no site "  onfocus="this.value=(this.value=='Buscar no site ')? '' : this.value ;" />
+          <input type="submit" name="go" id="go" value="Buscar" />
+        </fieldset>
+      </form>
+    </div>
+	<div id="dialog" title="Campo restrito">
+ <div id="search">
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Site Search</legend>
+          <input type="password" placeholder="Informe senha de acesso" required />
+          <input type="submit" id="restrito" value="Acessar" />
+        </fieldset>
+      </form>
+    </div>
+</div>
+    <br class="clear" />
+  </div>
+</div>
+ 
+<div class="wrapper">
+  <div class="container">
+    <div class="content">
+   		<script>
+		$(document).ready(function () {
+		
+		cortar();
+		 cortarTit();
+		 principal();
+		});
+		function cortarTit(){
+		
+var target = $('.Descricao');
+var limit = 30;
+var textLimited  ="";
+var textLenght = "";
+ 
+target.each(function() {
+    textLenght = $(this).text().length;
+ 
+    if (textLenght > limit) {
+        textLimited = $(this).text();
+        $(this).text(textLimited.substr(0, limit) + '…');
+    }
+});		}
+
+		function cortar(){
+		
+var target = $('.Des');
+var limit = 80;
+var textLimited  ="";
+var textLenght = "";
+ 
+target.each(function() {
+    textLenght = $(this).text().length;
+ 
+    if (textLenght > limit) {
+        textLimited = $(this).text();
+        $(this).text(textLimited.substr(0, limit) + '…');
+    }
+});		}
+
+	function principal(){
+		
+var target = $('.principal');
+var limit = 450;
+var textLimited  ="";
+var textLenght = "";
+ 
+target.each(function() {
+    textLenght = $(this).text().length;
+ 
+    if (textLenght > limit) {
+        textLimited = $(this).text();
+        $(this).text(textLimited.substr(0, limit) + '…');
+    }
+});		}
+
+		/*
+var dado = {
+   // 445 caracteres
+   descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+}
+
+let descricao = document.querySelector('.descricao');
+let descricao_txt = descricao;
+if(descricao_txt.length > 13) descricao_txt = descricao_txt.substr(0,13)+"...";
+//descricao.innerHTML = '<p>${descricao_txt}</p>';
+alert(descricao_txt);
+*/
+</script>
+
+	<div id="featured_slide">
+		
+        <ul id="featurednews">
+          {% for postagem in itens%}
+	
+		 <li><img width="2000"height="1000"src="{{postagem.arquivo}}" alt="" />
+            <div class="panel-overlay">
+              <h2 class="Descricao">{{postagem.titulo}}</h2>
+              <p class="Des">{{postagem.conteudo}}</p><br>
+               <p > <a href="http://localhost/php mvc com PDO TESTE/?pagina=post&id={{postagem.id}}">Continuar lendo&raquo;</a></p>
+            </div>
+          </li>
+		  {% endfor %}
+         <!-- <li><img src="app/Template/news-magazine/images/demo/2.gif" alt="" />
+            <div class="panel-overlay">
+              <h2>Aliquatjusto quisque nam</h2>
+              <p>Temperinte interdum sempus odio urna eget curabitur semper convallis nunc laoreet.<br />
+                <a href="#">Continue Reading &raquo;</a></p>
+            </div>
+          </li>
+          <li><img src="app/Template/news-magazine/images/demo/3.gif" alt="" />
+            <div class="panel-overlay">
+              <h2>Dapiensociis temper donec</h2>
+              <p>Temperinte interdum sempus odio urna eget curabitur semper convallis nunc laoreet.<br />
+                <a href="#">Continue Reading &raquo;</a></p>
+            </div>
+          </li>
+          <li><img src="app/Template/news-magazine/images/demo/4.gif" alt="" />
+            <div class="panel-overlay">
+              <h2>Semvelit nonummy odio tempus</h2>
+              <p>Justolacus eger at pede felit in dictum sempus elit curabitur ipsum. Ametpellentum.<br />
+                <a href="#">Continue Reading &raquo;</a></p>
+            </div>
+          </li>
+          <li><img src="app/Template/news-magazine/images/demo/5.gif" alt="" />
+            <div class="panel-overlay">
+              <h2>Pedefamet orci orci quisque</h2>
+              <p>Nonnam aenenasce morbi liberos malesuada risus id donec volutpat estibulum curabitae.<br />
+                <a href="#">Continue Reading &raquo;</a></p>
+            </div>
+          </li>-->
+        </ul>
+		
+      </div>
+	  
+	  
+	    
+   
+	  
+	 
+	    <div  style="margin-top:100px">   
+		{% for postagem in postagens%}
+		
+        
+      <img class="imgl" src="{{postagem.arquivo}}" alt="" width="200" height="125" />
+      <h1 ><a href="http://localhost/php mvc com PDO TESTE/?pagina=post&id={{postagem.id}}">{{postagem.titulo}}</a></h1>
+	  <p class="principal" style="font size:30px;">{{postagem.conteudo}}</p> 
+	  
+	 
+		
+		  <h6 style="color:#059BD8;">{{postagem.data}}</h6> 
+		    <hr>
+	
+		{% endfor %}
+  </div>
+       <!-- <li><img src="app/Template/news-magazine/images/demo/100x100.gif" alt="" />
+          <p><strong><a href="#">Indonectetus facilis leo.</a></strong> Nullamlacus dui ipsum cons eque loborttis non euis que morbi penas dapibulum orna. Urnaultrices quis curabitur phasellentesque.</p>
+        </li>
+        <li class="last"><img src="app/Template/news-magazine/images/demo/100x100.gif" alt="" />
+          <p><strong><a href="#">Indonectetus facilis leo.</a></strong> Nullamlacus dui ipsum cons eque loborttis non euis que morbi penas dapibulum orna. Urnaultrices quis curabitur phasellentesque.</p>
+        </li>
+      
+	  
+    </div>
+	<div style="
+	height: 370px; 
+overflow-y : auto;">
+  <div class=" column">
+      <ul class="latestnews">
+	  {% for postagem in postagens%}
+        <li><img src="app/Template/news-magazine/images/demo/100x100.gif" alt="" />
+          <p class="mouse" ><strong><a href="http://localhost/php mvc com PDO TESTE/?pagina=post&id={{postagem.id}}">{{postagem.titulo}}.</a></strong></p><br><br><p class="Des">{{postagem.conteudo}} </p>
+        </li>
+		{% endfor %}</ul></div>  </div>
+
+	
+       <!-- <li><img src="app/Template/news-magazine/images/demo/100x100.gif" alt="" />
+          <p><strong><a href="#">Indonectetus facilis leo.</a></strong> Nullamlacus dui ipsum cons eque loborttis non euis que morbi penas dapibulum orna. Urnaultrices quis curabitur phasellentesque.</p>
+        </li>
+        <li class="last"><img src="app/Template/news-magazine/images/demo/100x100.gif" alt="" />
+          <p><strong><a href="#">Indonectetus facilis leo.</a></strong> Nullamlacus dui ipsum cons eque loborttis non euis que morbi penas dapibulum orna. Urnaultrices quis curabitur phasellentesque.</p>
+        </li>-->
+      
+	  
+    
+    
+  </div>
+  
+    
+      
+  </div>
+<!--
+
+					<article>
+						
 							<header>
-								<h2><a href="http://localhost/PROJS/VIDEO_AULAS/SERIE/02_PHP+MVC+CRUD/?pagina=post&id={{postagem.id}}">{{postagem.titulo}}</a></h2>
+								<h2><a href="http://localhost/php mvc com PDO TESTE/?pagina=post&id={{postagem.id}}">{{postagem.titulo}}</a></h2>
 							</header>
 
-							<p>{{postagem.conteudo}}</p>
-						</article>
-					{% endfor %}
+							<p>{{postagem.conteudo}}</p><br>
+							
 
+						</article>
+						
+						
+						
+					
+					
+					
 				</section>
+				-->
+					

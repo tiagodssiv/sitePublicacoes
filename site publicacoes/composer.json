@@ -1,5 +1,5 @@
 {
     "require": {
-        "twig/twig": "^2.9"
+        "twig/twig": "^3.2"
     }
 }
