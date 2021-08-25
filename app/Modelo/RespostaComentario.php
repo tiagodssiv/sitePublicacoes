@@ -5,7 +5,7 @@ class RespostaComentario{
 	public static function inserirResposta($dadosPost){
     $id_resp_rep="";
 	$agora = new DateTime(); 
-    $data =$agora->format("y/m/d h:i:s");  
+    $data =$agora->format("d/m/y h:i");  
   
 
 

@@ -60,6 +60,14 @@ if(class_exists ($controller)){
 
 	
 	}
+	if(isset($urlGet['tipo'])){
+		
+		$array=array();
+		$array=$urlGet;
+			call_user_func_array(array(new $controller,$acao),array($array));
+
+	
+	}
 	 	call_user_func_array(array(new $controller,$acao),array('id'=>$id));   
 	
 	/* verifica se existe class */

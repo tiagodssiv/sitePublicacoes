@@ -85,11 +85,12 @@ function abrirDiv(el){
 		});
 
 //#################
-function verificar(assunto){
-    var assunto;
+function cadAssunto(){
 	
-    if(email == ""){alert('Informe um assunto para cadastar');
-	email = "";
+    var assunto = $("#ti").val();
+	
+    if(assunto == ""){alert('Informe um assunto para cadastar');
+	assunto = "";
 	 $(".ti").focus();
 		}
         else{
@@ -99,7 +100,7 @@ function verificar(assunto){
         dataType: 'html',
         beforeSend: function () {
         },
-        data: {assunto:email},
+        data: {assunto:assunto},
         success: function (msg){
 		 $("#ti").val("");
 		window.location.href = "http://localhost/php mvc com PDO TESTE/?pagina=admin&metodo=create";
@@ -109,9 +110,11 @@ function verificar(assunto){
 	  }
     });
 	}
+	
+	
 	}
 
-
+//##########################
 
 
 
@@ -138,23 +141,29 @@ target.each(function() {
 
 // bloco remove resposta comentario e principal
 function removerComentPrimario(dado){
+	if($('#name_user').val()==""){alert("Tem que logar antes");
+	}
+	else{
 	var Comentarioprincipal="comentarioPrincipal";
+	var id = $('#postagem').val();
  
 if(confirm('Remover?')){
-	//window.location.href = "http://localhost/php mvc com PDO TESTE/?pagina=admin&metodo=delete&id="+id;
+	window.location.href = "http://localhost/php mvc com PDO TESTE/?pagina=comentario&metodo=removeComentario&id="+dado+"&tipo="+Comentarioprincipal+"&postagem="+id;
 
-alert(Comentarioprincipal+dado);
 
-} }
+
+}} }
 
 function removerComentResposta(dado){
+	if($('#name_user').val()==""){alert("Tem que logar antes");}
+	else{
 	var primario="comentarioResposta";
- 
+ var id = $('#postagem').val();
 if(confirm('Remover?')){
-	//window.location.href = "http://localhost/php mvc com PDO TESTE/?pagina=admin&metodo=delete&id="+id;
+	window.location.href = "http://localhost/php mvc com PDO TESTE/?pagina=comentario&metodo=removeComentario&id="+dado+"&tipo="+primario+"&postagem="+id;
 
-alert(primario+dado);
-} }
+
+}} }
  //fim bloco remove resposta comentario e principal	
 	
 	
@@ -162,7 +171,7 @@ alert(primario+dado);
 function confirmacao(id) {
 
 if(confirm('Tem certeza de  Excluir?')){
-	window.location.href = "http://localhost/php mvc com PDO TESTE/?pagina=admin&metodo=delete&id="+id;
+	window.location.href = "http://localhost/php mvc com PDO TESTE/?pagina=comentario&metodo=removerComentario&id="+id;
 
 }}
 //CARREGA PÁGINA DEOPIS QUE TUDO ESTIVER CARREGADO 
@@ -262,11 +271,14 @@ function abrir(){
 
 
 <body id="top">
+
 <!--  loader  -->
 <div id="loading" style=" display: block;margin-left:22%;">
     <img src="app/loading-icon-animated-gif-19.jpg"/>
 </div><!-- FIM loader  -->
 <div style="display:none;"id="tudo">
+
+
 <div class="wrapper col0">
   <div id="topline">
     <!--<p>Tel: xxxxx xxxxxxxxxx | E-Mail: info@domain.com</p>-->
@@ -279,6 +291,49 @@ function abrir(){
     <br class="clear" />
   </div>
 </div>
+<!--#####################################################################################################-->
+
+<div class="wrapper col2">
+  <div id="topbar">
+    <div id="topnav">
+      <ul>
+        <li class="active"><a href="http://localhost/php mvc com PDO TESTE">Home</a></li>
+        <li><a href="http://localhost/php mvc com PDO TESTE/?pagina=sobre">Sobre</a></li>
+        <li><a href="app/Template/news-magazine/pages/full-width.html">Full Width</a></li>
+     <li><a href="#">Assunto</a>
+          <ul>
+		  
+		  {% for comentario in comentarios%}
+            <li><a href="#">{{comentario.descricao}}</a></li>
+			{% endfor %}
+          </ul>
+        </li>
+     </ul>
+    </div>
+    <div id="search">
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Site Search</legend>
+          <input type="text" value="Buscar no site "  onfocus="this.value=(this.value=='Buscar no site ')? '' : this.value ;" />
+          <input type="submit" name="go" id="go" value="Buscar" />
+        </fieldset>
+      </form>
+    </div>
+	<div id="dialog" title="Campo restrito">
+ <div id="search">
+      <form action="#" method="post">
+        <fieldset>
+          <legend>Site Search</legend>
+          <input type="password" placeholder="Informe senha de acesso" required />
+          <input type="submit" id="restrito" value="Acessar" />
+        </fieldset>
+      </form>
+    </div>
+</div>
+    <br class="clear" />
+  </div>
+</div>
+
 
 <!-- ####################################################################################################### -->
 

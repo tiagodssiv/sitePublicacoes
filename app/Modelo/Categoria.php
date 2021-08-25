@@ -10,7 +10,7 @@
 	 $con = Connection::getCon();
 	
 
- $sqll="SELECT  FROM  categoria ORDER BY id DESC";
+ $sqll="SELECT * FROM  categoria ORDER BY id DESC";
  $sqll=$con->prepare($sqll);
  $sqll->execute();
  if($sqll){

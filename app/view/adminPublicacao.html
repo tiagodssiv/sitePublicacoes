@@ -2,9 +2,10 @@
 
 <!-- ####################################################################################################### -->
 
+<!--#############################################-->
   <div class="container">
   <div class="content">
-     
+     <input id="user"type="text" size="5"value="2"/>
 	 <h1> {{postagens.titulo}}</h1>
 	 
      <img class="imgl" src="{{postagens.arquivo}}" alt="" width="100%" height="300" />
@@ -23,13 +24,13 @@
         <ul class="commentlist">
 	 {% for coment in postagens.comentarios %}
 		
-		<div id="{{coment.id_comentario}}">
+		<div id="">
 							  <li class="comment_even">
             <div class="author"><img class="avatar" src="app/Template/news-magazine/images/demo/avatar.gif" width="32" height="32" alt="" /><span class="name">{{coment.nome}}<a href="#"></a></span> <span class="wrote">Feito:</span></div>
             <div class="submitdate"><small style="color:DodgerBlue">{{coment.data_hora}}</small></div>
             <p>{{coment.mensagem}}</p>
 		 <button  onclick="removerComentPrimario({{coment.id_comentario}});" >Remover</button>
-           <a href="#{{coment.id_comentario}}"> <button >Editar</button></a>
+           <a href="#{{coment.id_comentario}}"> <button onclick="editarCment();">Editar</button></a>
 		 	 <button onclick="abrirDiv({{coment.id_comentario}});">Responder</button>
 		
 		<div style="display:none;"id="{{coment.id_comentario}}">
@@ -85,6 +86,7 @@
              <input type="text" placeholder="id usuer" name="user" id="name_user" value="2" size="22" />
              <input type="text" name="id_comentario"  placeholder="id comentario" id="comen" value="{{coment.id_comentario}}" size="22" />
              <input type="text"  placeholder="id postagem" name="id_postagem" id="postagem" value="{{postagens.id}}" size="22" />
+              <input type="text"  placeholder="id resposta" name="id_resposta" id="" value="{{co.id_resposta}}" size="3" />
              
          
           </p>

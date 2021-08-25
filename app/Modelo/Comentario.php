@@ -53,7 +53,65 @@ class Comentario
 	/*FIM esta função acima ,tem pega as tabelas necesárias para identificar
 	os dados das tabelas respostascomentario , comentarios e postagem.É 
 	necessário para mostrar na tela de gerenciamento de comentários (adminPublicacao) e admin*/
+	public static function removerComentario($dados){
+        $id=$dados['id'];
+       $tipo=$dados['tipo'];
+	   $id_postagem=$dados['postagem'];
+	   
+	   if($tipo=="comentarioPrincipal"){
+		 $con= Connection::getCon();
+    //deleta comentario
+    $sql=$con->prepare("DELETE  FROM comentarios WHERE id_comentario = ?");
+    
+    $resultado=$sql->execute(array($id));
+	//----------
+	//deleta tabela respostacomentario baseando no id comentario
+	 $sql=$con->prepare("DELETE  FROM respostascomentario WHERE id_comentarios = ?");
+    
+    $sql->execute(array($id));
+	//-----
 	
+	$dadoss=Postagem::selecionaPorId($id_postagem);//pega os dados da postagem pelo id 
+
+$quantidade =$dadoss->quantidade-1;//recebe a quantidade e retira -1
+$lista=array('id'=>$id_postagem,'quantidade'=>$quantidade);//acrecenta no array lista o id da postagem e a quantidade já calculado
+
+if(Postagem::atualizarQuantidade($lista))//médoto da class postagem que atualiza o valor da quantidade
+{
+	$dadoss=Postagem::selecionaPorId($id_postagem);
+
+	
+}
+
+
+
+    if($resultado==0){
+    throw new Exception("Não foi possível encontrar nenhum registro");
+    return false;
+    }
+    
+    return true; 
+		
+	   }else{
+		   
+		   $con= Connection::getCon();
+    //apaga resposta pelo id da resposta
+    $sql=$con->prepare("DELETE  FROM respostascomentario WHERE id_resposta = ?");
+    
+    $resultado=$sql->execute(array($id)); 
+	
+
+    if($resultado==0){
+    throw new Exception("Não foi possível remover nenhum registro");
+    return false;
+		   
+	   }
+     
+
+return true;
+
+	   }
+    }
 	
     public static function selecionarComentarios($idPost)
     {

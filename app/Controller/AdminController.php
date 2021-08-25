@@ -20,9 +20,9 @@
 		
 	        $core = new AdminController();
 	        $teste="";
-            $teste=$_POST['email'];
-			$fraseSemEspaco = str_replace(' ', '', $teste);
-            $fraseSemEspaco=ucfirst($fraseSemEspaco);
+            $teste=$_POST['assunto'];
+			$fraseSemEspaco = str_replace(' ', '', $teste);//tira o espaço no texto
+            $fraseSemEspaco=ucfirst($fraseSemEspaco);//primeira palavra em maiúscula
 			 $core->cadastrarAssuntos($fraseSemEspaco);
 		
 			//ucfirst é uma função nativa que coloca maiúsculo a primeira letra  . a variável vem do get e recebe a palavra Controller, que vai resultar em nome de uma class
@@ -84,7 +84,7 @@
 			
 			try {
 				// está pegando os dados da classe static sem ser necessário instanciar
-                $objPostagens=Postagem::postagens();
+                $objPostagens=Postagem::selecionarTodas();//Postagem::postagens();
 				$loader = new \Twig\Loader\FilesystemLoader('app/view');//especifica a pasta onde está pagina a ser acessda
 				$twig = new \Twig\Environment($loader);//instancia 
 				$template = $twig->load('admin.html');//carrega a pagina 
@@ -132,6 +132,7 @@
 			    $dados=Categoria::selecionarCategorias();
 				
 				$parametros['lista']=$dados;
+				
 
 				$conteudo=$template->render($parametros);//aqui pega os parametros e renderiza junto com pagina html e joga tudo na variavel $conteudo
 

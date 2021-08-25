@@ -58,6 +58,26 @@ return true;
  
 }
 
+public static function selecionarTodas(){
+	
+	$list=array();
+	 $dica;
+	 $ano;
+	 $mes;
+	 $con = Connection::getCon();
+	
+
+$sql="SELECT quantidade,id,arquivo,conteudo,destaque , titulo,date_format( data,'%d/%m/%Y às %h:%m' ) AS data FROM postagem WHERE ex ='0' ORDER BY id DESC";
+$sql=$con->prepare($sql);
+$sql->execute();
+	 while ($roww = $sql->/*fetch(PDO::FETCH_ASSOC))*/  fetchObject('Postagem')){
+		 $list []=$roww;
+		 
+	 }
+$des=array();
+//$des=Destaque::destaques();
+return $list;
+}
 
 
 
@@ -116,7 +136,8 @@ public static function selecionaPorId($idPost){
 $dica;
 $ano;
 $mes;
-$con= Connection::getCon();
+$con=   new  PDO('mysql:host=127.0.0.1:3312; dbname=serie-criando-site;','root','');
+//Connection::getCon();
 $sql="SELECT * FROM postagem WHERE id = ?";
 $sql=$con->prepare($sql);
 $sql->execute(array($idPost));
@@ -210,6 +231,23 @@ public static function delete($idPost){
     }
 
     
+  public static function atualizarQuantidade($dados){
+      $id=$dados['id'];
+      $quantidade=$dados['quantidade'];
+      
+$con= new  PDO('mysql:host=127.0.0.1:3312; dbname=serie-criando-site;','root','');
+//Connection::getCon();
+$SQL = 'UPDATE postagem SET quantidade = ?  WHERE id = ?';
+$sql=$con->prepare($SQL);
+$res=$sql->execute(array($quantidade,$id));
+
+if($res==0){
+    throw new Exception("Erro ao atualizar !");
+    return false;
+}return true;
+
+   
+  }
 
   public static function atualizarPostagem($dados){
       $id=$dados['id'];

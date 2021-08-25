@@ -1,45 +1,6 @@
 				
 
-	<div class="wrapper col2">
-  <div id="topbar">
-    <div id="topnav">
-      <ul>
-        <li class="active"><a href="http://localhost/php mvc com PDO TESTE">Home</a></li>
-        <li><a href="http://localhost/php mvc com PDO TESTE/?pagina=sobre">Sobre</a></li>
-        <li><a href="app/Template/news-magazine/pages/full-width.html">Full Width</a></li>
-     <li><a href="#">Assunto</a>
-          <ul>
-		  
-		  {% for comentario in comentarios%}
-            <li><a href="#">{{comentario.descricao}}</a></li>
-			{% endfor %}
-          </ul>
-        </li>
-     </ul>
-    </div>
-    <div id="search">
-      <form action="#" method="post">
-        <fieldset>
-          <legend>Site Search</legend>
-          <input type="text" value="Buscar no site "  onfocus="this.value=(this.value=='Buscar no site ')? '' : this.value ;" />
-          <input type="submit" name="go" id="go" value="Buscar" />
-        </fieldset>
-      </form>
-    </div>
-	<div id="dialog" title="Campo restrito">
- <div id="search">
-      <form action="#" method="post">
-        <fieldset>
-          <legend>Site Search</legend>
-          <input type="password" placeholder="Informe senha de acesso" required />
-          <input type="submit" id="restrito" value="Acessar" />
-        </fieldset>
-      </form>
-    </div>
-</div>
-    <br class="clear" />
-  </div>
-</div>
+	
  
 <div class="wrapper">
   <div class="container">
