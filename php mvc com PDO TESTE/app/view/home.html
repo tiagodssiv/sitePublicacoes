@@ -1,0 +1,130 @@
+				
+
+	
+ 
+<div class="wrapper">
+  <div class="container">
+    <div class="content">
+   		<script>
+		$(document).ready(function () {
+		
+		cortar();
+		 cortarTit();
+		 principal();
+		});
+		function cortarTit(){
+		
+var target = $('.Descricao');
+var limit = 35;
+var textLimited  ="";
+var textLenght = "";
+ 
+target.each(function() {
+    textLenght = $(this).text().length;
+ 
+    if (textLenght > limit) {
+        textLimited = $(this).text();
+        $(this).text(textLimited.substr(0, limit) + '…');
+    }
+});		}
+//diminui caracteres do texto de descrção no slide
+		function cortar(){
+		
+var target = $('.Des');
+var limit = 75;
+var textLimited  ="";
+var textLenght = "";
+ 
+target.each(function() {
+    textLenght = $(this).text().length;
+ 
+    if (textLenght > limit) {
+        textLimited = $(this).text();
+        $(this).text(textLimited.substr(0, limit) + '…');
+    }
+});		}
+//FIM diminui caracteres do texto de descrção no slide
+
+//delimita a descrição do texto da publicação
+	function principal(){
+		
+var target = $('.principal');
+var limit = 250;
+var textLimited  ="";
+var textLenght = "";
+ 
+target.each(function() {
+    textLenght = $(this).text().length;
+ 
+    if (textLenght > limit) {
+        textLimited = $(this).text();
+        $(this).text(textLimited.substr(0, limit) + '…');
+    }
+});		}
+//-------
+
+		/*
+var dado = {
+   // 445 caracteres
+   descricao: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+}
+
+let descricao = document.querySelector('.descricao');
+let descricao_txt = descricao;
+if(descricao_txt.length > 13) descricao_txt = descricao_txt.substr(0,13)+"...";
+//descricao.innerHTML = '<p>${descricao_txt}</p>';
+alert(descricao_txt);
+*/
+</script>
+  
+	<div id="featured_slide">
+		
+        <ul id="featurednews">
+          {% for postagem in itens%}
+	
+		 <li><img width="2000"height="1000"src="{{postagem.arquivo}}" alt="" />
+            <div class="panel-overlay">
+              <h2 class="Descricao">{{postagem.titulo}}</h2>
+              <p class="Des">{{postagem.conteudo_sem_caractere}}</p><br>
+               <p > <a href="http://localhost/php mvc com PDO TESTE/?pagina=post&id={{postagem.id}}">Continuar lendo&raquo;</a></p>
+            </div>
+          </li>
+		  {% endfor %}
+         </ul>
+		
+      </div>
+	  <!--  IMAGEM DE PROPAGANDA -->
+	  
+	    <div style="margin-top:40px;"id="featured">
+         <a href="#"><img width="630" height="278" src="app/Template/news-magazine/images/demo/Jxzi.gif" alt="" /></a>
+         
+      </div>
+   <!-- FIM IMAGEM DE PROPAGANDA -->
+	  
+	 
+	    <div  style="margin-top:100px">   
+		{% for postagem in postagens%}
+		
+        
+      <img class="imgl" src="{{postagem.arquivo}}" alt="" width="200" height="125" />
+      <h1 class=""><a href="http://localhost/php mvc com PDO TESTE/?pagina=post&id={{postagem.id}}">{{postagem.titulo}}</a></h1>
+	  <p class="principal" style="font size:30px;">{{postagem.conteudo_sem_caractere}}</p> 
+	  
+	 
+		
+		  <h6 style="color:#059BD8;">{{postagem.data}}</h6> 
+		    <hr>
+	
+		{% endfor %}
+		
+  </div>
+
+    
+    
+  </div>
+  
+    
+      
+  </div>
+
+					

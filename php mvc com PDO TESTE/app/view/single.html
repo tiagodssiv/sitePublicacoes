@@ -1,0 +1,189 @@
+
+<!-- ####################################################################################################### -->
+<div class="wrapper">
+  <div id="header">
+    <div class="fl_left">
+      <h1><a href="../index.html"><strong>N</strong>ews <strong>M</strong>agazine</a></h1>
+      <p>Free Website Template</p>
+    </div>
+   <!--PROPAGANDA --> <div class="fl_right"><a href="#"><img width="468" height="60"src="app/Template/news-magazine/images/demo/Spotify-gif-logo.gif" alt="" /></a></div> <!--FIM PROPAGANDA -->
+    <br class="clear" />
+  </div>
+</div>
+<!-- ####################################################################################################### -->
+ <input id="user" type="hidden" size="5"value="{{id_user}}"/>
+  <div class="container">
+  <div class="content">
+     
+	 <h1> {{titulo}}</h1>
+	 
+      <img class="imgl" src="{{arquivo}}" alt="" width="100%" height="300" />
+     <p style="Font-size: 20px">{{conteudo}}</p>
+	 <h6 style="color:DodgerBlue">{{data}}</h6>
+     
+    
+     
+      <h2>Deixe sua opinião</h2>
+      <div id="respond">
+        <form action="http://localhost/php mvc com PDO TESTE/?pagina=post&metodo=addComent" method="post">
+          <p>
+		   <input type="hidden" placeholder="id_usr" required name="id_usr" id="id_usr" value="{{id_user}}" size="4" />
+           
+            <input type="text" placeholder="Nome"required name="nome" id="name" value="{{nome_user}}" size="22" />
+            <label for="Nome"><small style="color:red">* </small></label>
+          </p>
+          <p>
+            <input type="email" name="email" required  placeholder="E-mail" id="email" value="" size="22" />
+            <label for="email"><small style="color:red">* </small></label>
+             <input type="hidden" name="id" id="" value="{{id}}" size="22" />
+           
+		  
+		  </p>
+          <p>
+            <textarea name="msg" required id="comment" cols="100%" rows="10"></textarea>
+            <label for="comment" style="display:none;"><small style="color:red">*</small></label>
+          </p>
+          <p>
+            <input name="submit" type="submit" id="submit" value="Enviar" />
+            &nbsp;
+            <input name="reset" type="reset" id="reset" tabindex="5" value="Apagar" />
+          </p>
+        </form>
+     	 </div>
+  
+   <div style="
+   margin-top:10px;
+	height: 1000px; 
+    overflow-y : auto;" id="comments">
+       
+        <ul class="commentlist">
+	 {% for coment in comentarios %}
+		
+		<div id="">
+			<li class="comment_even">
+			 <h6 style="margin-left:10px;float:right;">{{coment.editado}}</h6>
+		    
+			<input placeholder="user"type="hidden" value="{{coment.id_use}}" id="usuario{{coment.id_comentario}}"/>
+		    
+			<div class="author"><img class="avatar" src="app/Template/news-magazine/images/demo/avatar.gif" width="32" height="32" alt="" /><span class="name">{{coment.nome}}<a href="#"></a></span> <span class="wrote">Feito:</span></div>
+            
+		   <div class="submitdate"><small style="color:DodgerBlue">{{coment.data_hora}}</small></div>
+            <p>{{coment.mensagem}}</p>
+		 <button  onclick="editar({{coment.id_comentario}});" >Editar</button>
+        <!--<a href="#{{coment.id_comentario}}"> <button onclick="editarCment({{coment.id_comentario}});">Editar</button></a>-->
+		   <button id="" onclick="limparCampo({{coment.id_comentario}});">Responder</button>
+		
+		<div style="display:none;"id="{{coment.id_comentario}}">
+        <form action="?pagina=comentario&metodo=insertComentario" method="post">
+          <p>
+             <input type="hidden" placeholder="id usuer" name="user" id="name_user" value="{{id_user}}" size="22" />
+             <input type="hidden" name="id_comentario"  placeholder="id comentario" id="" value="{{coment.id_comentario}}" size="22" />
+             <input type="hidden"  placeholder="id postagem" name="id_postagem" id="postagem" value="{{id}}" size="7" />
+             <input type="hidden"  placeholder="tipo" name="tipo" id="tipo{{coment.id_comentario}}" value="principal{{coment.id_comentario}}" size="7" />
+          
+          </p>
+          
+          <p>
+            <textarea name="msg" value="tttttt"required id="comentario{{coment.id_comentario}}" cols="100%" rows="10"></textarea>
+            <label for="comment" style="display:none;"><small style="color:red">*</small></label>
+          </p>
+          <p>
+            <input name="submit" type="submit" id="submit" value="Enviar" />
+            &nbsp;
+          </p>
+        </form>
+     	 </div>
+		 
+</li>
+</div>
+		
+		
+		
+			
+			{%for co in comerespostas%}
+				
+			
+			{% if  co.id_comentarios == coment.id_comentario  %}
+			
+			  <li class="comment_odd">
+			   <h6 style="margin-left:10px;float:right;">{{co.edita}}</h6>
+		    
+			<input placeholder="user"type="hidden" value="{{co.id_usuario}}" id="usuario{{co.id_resposta}}"/>
+            
+		   <div class="author">
+			<img class="avatar" src="app/Template/news-magazine/images/demo/avatar.gif" width="32" height="32" alt="" /><span class="name"><a href="#">
+			{%if co.id_usuario == 2%}
+			
+			Administrador
+			
+			{%endif%} 
+
+			{%if co.id_usuario != 2%}
+			
+			{{coment.nome}}
+			
+			{%endif%}
+			
+			</a></span> <span class="wrote">Feito:</span></div>
+            <div class="submitdate"><a href="#">{{co.dat}}</a></div>
+            <p>{{co.resposta}}</p>
+         	 <button  onclick="editar({{co.id_resposta}});"  >Editar</button>
+		  <button id="resp" onclick="limparCampo({{co.id_resposta}});">Responder</button>
+		 <!--	<a href="#{{co.id_resposta}}"> <button onclick="editarRespCment({{co.id_resposta}});" >Editar</button></a>-->
+		
+		
+		
+		
+		
+		<div style="display:none;"id="{{co.id_resposta}}">
+        <form action="?pagina=comentario&metodo=insertComentario" method="post">
+          <p>
+             <input type="hidden" placeholder="id usuer" name="user" id="name_user" value="{{id_user}}" size="22" />
+             <input type="hidden" name="id_comentario"  placeholder="id comentario" id="comen" value="{{coment.id_comentario}}" size="22" />
+             <input type="hidden"  placeholder="id postagem" name="id_postagem" id="postagem" value="{{id}}" size="7" />
+              <input type="hidden"  placeholder="id resposta" name="id_resposta" id="" value="{{co.id_resposta}}" size="3" />
+              <input type="hidden"  placeholder="id postagem" name="tipo" id="tipo{{co.id_resposta}}" value="resposta{{co.id_resposta}}" size="7" />
+          
+         
+          </p>
+          
+          <p>
+            <textarea name="msg" value=""required id="comentari{{co.id_resposta}}" cols="100%" rows="10"></textarea>
+          </p>
+          <p>
+            <input name="submit" type="submit" id="submit" value="Enviar" />
+            &nbsp;
+          </p>
+        </form>
+     	 </div>
+		 </li>
+		 	
+			
+			
+
+		{% endif %}
+			{% endfor %}
+			
+		
+		 
+
+
+
+		
+		{% endfor %}
+		  
+		  
+		 
+        </ul>
+      </div>
+	
+   </div>
+
+   </div>
+   
+      
+
+
+
+
+

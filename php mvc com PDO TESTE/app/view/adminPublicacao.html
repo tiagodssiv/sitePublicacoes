@@ -1,0 +1,157 @@
+
+
+<!-- ####################################################################################################### -->
+
+<!--#############################################-->
+  <div class="container">
+  <div class="content">
+     <input id="user" type="hidden" size="5"value="2"/>
+	 <h1> {{postagens.titulo}}</h1>
+	 
+     <img class="imgl" src="{{postagens.arquivo}}" alt="" width="100%" height="300" />
+     <p style="Font-size: 20px">{{postagens.conteudo}}</p>
+	 <h6 style="color:DodgerBlue">{{dataBrasil}}</h6>
+     
+     <h2>Responder</h2>
+   
+     
+      <h2>Comentários</h2>
+     
+   <div style="
+	height: 1000px; 
+    overflow-y : auto;" id="comments">
+        
+        <ul class="commentlist">
+	 {% for coment in postagens.comentarios %}
+		
+		<div id="">
+							  <li class="comment_even">
+            <div class="author"><img class="avatar" src="app/Template/news-magazine/images/demo/avatar.gif" width="32" height="32" alt="" /><span class="name">
+			
+			{%if coment.id_use == 2%}
+			
+			Administrador
+			
+			{%endif%} 
+
+			{%if coment.id_use != 2%}
+			
+			{{coment.nome}}
+			
+			{%endif%}
+			
+			<a href="#"></a></span> <span class="wrote">Feito:</span></div>
+            <div class="submitdate"><small style="color:DodgerBlue">{{coment.data_hora}}</small></div>
+            <p>{{coment.mensagem}}</p>
+		 <button  onclick="removerComentPrimario({{coment.id_comentario}});" >Remover</button>
+        <!--   <a href="#{{coment.id_comentario}}"> <button onclick="editarCment({{coment.id_comentario}});">Editar</button></a>-->
+		   <button id="" onclick="abrirDiv({{coment.id_comentario}});">Responder</button>
+		
+		<div style="display:none;"id="{{coment.id_comentario}}">
+        <form action="?pagina=comentario&metodo=insertComentarioAdmin" method="post">
+          <p>
+             <input type="text" placeholder="id usuer" name="user" id="name_user" value="{{id_user}}" size="22" />
+             <input type="text" name="id_comentario"  placeholder="id comentario" id="" value="{{coment.id_comentario}}" size="22" />
+             <input type="text"  placeholder="id postagem" name="id_postagem" id="postagem" value="{{postagens.id}}" size="22" />
+             <input type="text"  placeholder="id postagem" name="tipo" id="{{coment.id_comentario}}" value="{{postagens.id}}" size="7" />
+           
+          </p>
+          
+          <p>
+            <textarea name="msg" required id="comment" cols="100%" rows="10"></textarea>
+            <label for="comment" style="display:none;"><small style="color:red">*</small></label>
+          </p>
+          <p>
+            <input name="submit" type="submit" id="submit" value="Enviar" />
+            &nbsp;
+          </p>
+        </form>
+     	 </div>
+		 
+</li>
+</div>
+		
+		
+		
+			
+			{%for co in comerespostas%}
+				
+			
+			{% if  co.id_comentarios == coment.id_comentario  %}
+			
+			  <li class="comment_odd">
+		 
+            <div class="author">
+			
+			
+			<img class="avatar" src="app/Template/news-magazine/images/demo/avatar.gif" width="32" height="32" alt="" /><span class="name"><a href="#">
+			
+			{%if co.id_usuario == 2%}
+			
+			Administrador
+			
+			{%endif%} 
+
+			{%if co.id_usuario != 2%}
+			
+			{{co.nome}}
+			
+			{%endif%} </a></span> <span class="wrote">Feito:</span></div>
+            <div class="submitdate"><a href="#">{{co.dat}}</a></div>
+            <p>{{co.resposta}}</p>
+         	 <button  onclick="removerComentResposta({{co.id_resposta}});" >Remover</button>
+		  <button id="resp" onclick="abrirDiv({{co.id_resposta}});">Responder</button>
+		 <!--	<a href="#{{co.id_resposta}}"> <button onclick="editarRespCment({{co.id_resposta}});" >Editar</button></a>-->
+		
+		
+		
+		
+		
+		<div style="display:none;"id="{{co.id_resposta}}">
+        <form action="?pagina=comentario&metodo=insertComentarioAdmin" method="post">
+          <p>
+             <input type="text" placeholder="id usuer" name="user" id="name_user" value="{{id_user}}" size="22" />
+             <input type="text" name="id_comentario"  placeholder="id comentario" id="comen" value="{{coment.id_comentario}}" size="22" />
+             <input type="text"  placeholder="id postagem" name="id_postagem" id="postagem" value="{{postagens.id}}" size="22" />
+              <input type="text"  placeholder="id resposta" name="id_resposta" id="" value="{{co.id_resposta}}" size="3" />
+              <input type="text"  placeholder="id postagem" name="tipo" id="tipo" value="{{postagens.id}}" size="7" />
+          
+         
+          </p>
+          
+          <p>
+            <textarea name="msg" value=""required id="comment" cols="100%" rows="10"></textarea>
+          </p>
+          <p>
+            <input name="submit" type="submit" id="submit" value="Enviar" />
+            &nbsp;
+          </p>
+        </form>
+     	 </div>
+		 </li>
+		 	
+			
+			
+
+		{% endif %}
+			{% endfor %}
+			
+		
+		 
+
+
+
+		
+		{% endfor %}
+		  
+		  
+		 
+        </ul>
+      </div>
+	
+   </div>
+
+   </div>
+      
+	 
+	 
