@@ -3,7 +3,7 @@ bem como escolher o tipo de notícia a que deseja visualizar
 
 As tecnologias utilizadas neste projeto são : css, javascript,jquery,php orientado a objetos ,MVC, MySql e twig.
 
-O sistema apresenta tela inicial de home , que mostra slides contendo as notícias em destaque cadastrada no site , que o usuário administrartivo pode destacar de acordo com 
+O sistema apresenta tela inicial de home , que mostra slides contendo as notícias em destaque cadastrada no site , que o usuário administrativo pode destacar de acordo com 
 seu interesse.Pode-se destacar até 10 publicações , ou seja , até 10 publicações podem aparecer nos eslides em destaque no topo da home do site.Mas esta regra de negócio
 de destacar somente 10 publicações  , pode ser alterada para mais ou para menos publicações
 
