@@ -7,9 +7,9 @@ O sistema apresenta tela inicial de home , que mostra slides contendo as notíci
 seu interesse.Pode-se destacar até 10 publicações , ou seja , até 10 publicações podem aparecer nos eslides em destaque no topo da home do site.Mas esta regra de negócio
 de destacar somente 10 publicações  , pode ser alterada para mais ou para menos publicações
 
-O site ,disponibiliza também , área administrativa , que somente perfil autorizado pode acessar .Devido a sinha especifica cadastrada no banco , o admin acessa seu perfil .
-O usuário admin pode excluir comentários , escrevê-los, excluir publicações , editar e cadastrá-las , bem como controlar os destaques de publicações no topo da home do site.
+O site disponibiliza  área administrativa , que somente perfil autorizado pode acessar .Devido a senha especifica cadastrada no banco , o admin acessa seu perfil .
+O usuário admin pode excluir comentários , escrevê-los, excluir publicações , editar e cadastrar , bem como controlar os destaques de publicações no topo da home do site.
 
-O sistema   foi desenvolvido somente para fins educacionais , não foi copiado ou feito por terceiro , e sim pelo proprietário do perfil tiagodssiv
+O sistema   foi desenvolvido somente para fins educacionais , não foi copiado ou feito por terceiros , e sim pelo proprietário do perfil tiagodssiv
 
 
